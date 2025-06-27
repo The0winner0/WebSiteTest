@@ -2,7 +2,7 @@ import React from 'react';
 import Spacer from './Spacer';
 import PageHeading from '../../components/PageHeading';
 
-const BlogHeader = ({ breadcrumb, title }) => {
+const BlogHeader = ({ title }) => {
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-3a1a21b elementor-section-boxed elementor-section-height-default elementor-section-height-default">
       <div className="elementor-container elementor-column-gap-default">
