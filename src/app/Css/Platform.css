@@ -1,0 +1,213 @@
+/*
+  Scoped CSS for the Platform Page.
+  This file namespaces all styles under the '.main-page-content' class
+  to prevent them from affecting other pages.
+*/
+
+/* Base styles, now scoped to your page's main container */
+.main-page-content {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+  letter-spacing: 0.06em;
+  word-spacing: 0.2em;
+  color: rgb(112, 116, 126);
+  background-color: #fff;
+}
+
+/* Styles for the inner wrapper you are using */
+.main-page-content .page-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* All original selectors are now nested to apply only within your page */
+.main-page-content div[class*="-container"],
+.main-page-content div[class*="-wrapper"] {
+  text-align: center;
+}
+
+.main-page-content h1,
+.main-page-content h2,
+.main-page-content h3,
+.main-page-content h4,
+.main-page-content h5,
+.main-page-content h6 {
+  color: black;
+  margin: 0.5em 0;
+  font-size: 3em;
+  font-weight: 450;
+}
+
+.main-page-content div[class*="-section-container"] {
+  padding: 40px 20px;
+}
+
+.main-page-content img,
+.main-page-content .hero-dashboard-image,
+.main-page-content .route-map-feature-image,
+.main-page-content .config-app-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-page-content .customer-choice-svg-group-inner,
+.main-page-content .iot-platform-svg-group-inner,
+.main-page-content .tag-families-svg-group-inner,
+.main-page-content .applications-details-inner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.main-page-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: left;
+  display: inline-block;
+}
+
+.main-page-content li {
+  margin-bottom: 10px;
+}
+
+.main-page-content .use-cases-details-inner-container {
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+  text-align: left;
+}
+
+.main-page-content .use-cases-image-column,
+.main-page-content .use-cases-text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-page-content .li {
+  margin-left: 10px;
+}
+
+.main-page-content .config-app-section-inner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  text-align: left;
+}
+
+.main-page-content .config-app-text-column {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 40%;
+  min-width: 300px;
+}
+
+.main-page-content .config-app-gallery-column {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 60%;
+  min-width: 250px;
+}
+
+.main-page-content .config-app-image-gallery-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.main-page-content .config-app-image-gallery-group .gallery-item {
+  max-width: 150px;
+  margin: 0;
+  flex: 1;
+}
+
+.main-page-content .config-app-image {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-page-content .config-app-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.main-page-content .hero-heading-primary {
+  font-size: 5rem;
+}
+
+.main-page-content .hero-heading-secondary {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+.main-page-content .hero-content-text {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.main-page-content .hero-spacer {
+  height: 20px;
+}
+
+.main-page-content .large-text {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.main-page-content .elementor-widget-container {
+  text-align: center;
+}
+.main-page-content .elementor-icon-box-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.main-page-content .elementor-icon {
+  display: inline-block;
+  color: #61CE70; 
+}
+.main-page-content .e-font-icon-svg {
+  width: 50px;
+  height: 50px;
+}
+.main-page-content .elementor-icon-box-title {
+  font-size: 1.5em; 
+  font-weight: bold;
+  color: #333;
+}
+.main-page-content .elementor-icon-box-description {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+
+/* Scoped Media Queries */
+@media (max-width: 768px) {
+  .main-page-content .use-cases-details-inner-container,
+  .main-page-content .config-app-section-inner-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main-page-content .use-cases-text-column,
+  .main-page-content .config-app-text-column {
+    text-align: center;
+  }
+
+  .main-page-content .config-app-features-list {
+    display: inline-block;
+    text-align: left;
+  }
+}
