@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 // add more images direcly here if needed
@@ -18,15 +18,16 @@ export default function ImageSlideshow({ autoPlayInterval = 7000 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = galleryImages;
 
-  // Handler to go to the next slide
-  const handleNext = () => {
+  // FIX: Wrap handler in useCallback to stabilize the function reference.
+  // It only needs to be recreated if the number of images changes.
+  const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
+  }, [images.length]);
 
-  // Handler to go to the previous slide
-  const handlePrev = () => {
+  // FIX: Do the same for handlePrev for consistency.
+  const handlePrev = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
+  }, [images.length]);
 
   // Set up the auto-play interval
   useEffect(() => {
@@ -34,9 +35,11 @@ export default function ImageSlideshow({ autoPlayInterval = 7000 }) {
 
     const interval = setInterval(handleNext, autoPlayInterval);
     return () => clearInterval(interval);
-    // We only want to reset the interval when the handler function changes.
-    // The component re-renders on currentIndex change, but the interval continues.
-  }, [images.length, autoPlayInterval]);
+    
+    // FIX: Add handleNext to the dependency array. Since handleNext is now
+    // memoized with useCallback, this effect will only reset the interval
+    // if autoPlayInterval changes or if handleNext itself changes (i.e., when images.length changes).
+  }, [handleNext, autoPlayInterval]);
 
   const handleThumbnailClick = (index) => {
     setCurrentIndex(index);
@@ -57,6 +60,7 @@ export default function ImageSlideshow({ autoPlayInterval = 7000 }) {
               className="slideshow__image"
               sizes="(max-width: 768px) 100vw, 800px"
               priority={index === 0}
+              onError={(e) => e.target.style.display = 'none'} // Basic fallback
             />
           </div>
         ))}
